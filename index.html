@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Fresh - Restoran Seafood & Kuliner Bahari</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        marine: {
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-ocean-marine {
+            background: linear-gradient(135deg, #0284c7 0%, #0d9488 50%, #059669 100%);
+        }
+        .bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#0284c7 0.5px, transparent 0.5px), radial-gradient(#059669 0.5px, #f8fafc 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-ocean-500 selection:text-white">
+
+    <!-- NAVBAR (Warna Putih Sesuai Permintaan) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 border-b border-slate-100" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo Restoran -->
+                <a href="#beranda" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl gradient-ocean-marine flex items-center justify-center text-white text-xl shadow-lg shadow-ocean-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-fish-fins"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-slate-800 tracking-tight">Ocean<span class="text-ocean-600">Fresh</span></span>
+                        <span class="block text-[10px] font-semibold text-marine-600 tracking-widest uppercase -mt-1">Seafood Restaurant</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#beranda" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-700 hover:text-ocean-600 hover:bg-ocean-50 transition-colors">Beranda</a>
+                    <a href="#menu" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-700 hover:text-ocean-600 hover:bg-ocean-50 transition-colors">Menu</a>
+                    <a href="#reservasi" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-700 hover:text-ocean-600 hover:bg-ocean-50 transition-colors">Reservasi Langsung</a>
+                    <a href="#kontak" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-700 hover:text-ocean-600 hover:bg-ocean-50 transition-colors">Kontak</a>
+                    <a href="#alamat" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-700 hover:text-ocean-600 hover:bg-ocean-50 transition-colors">Alamat</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#reservasi" class="px-5 py-2.5 rounded-full text-sm font-bold text-white gradient-ocean-marine hover:opacity-95 shadow-md shadow-ocean-500/20 hover:shadow-lg transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-utensils text-xs"></i>
+                        <span>Booking Meja</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-ocean-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg">
+            <a href="#beranda" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-ocean-50 hover:text-ocean-600 font-medium">Beranda</a>
+            <a href="#menu" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-ocean-50 hover:text-ocean-600 font-medium">Menu</a>
+            <a href="#reservasi" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-ocean-50 hover:text-ocean-600 font-medium">Reservasi Langsung</a>
+            <a href="#kontak" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-ocean-50 hover:text-ocean-600 font-medium">Kontak</a>
+            <a href="#alamat" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-ocean-50 hover:text-ocean-600 font-medium">Alamat</a>
+            <a href="#reservasi" class="mobile-link block w-full text-center py-3 rounded-lg font-bold text-white gradient-ocean-marine mt-4 shadow-md">Pesan Tempat Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- BAGIAN 1: BERANDA (HOME) -->
+    <section id="beranda" class="relative pt-8 pb-20 md:py-24 overflow-hidden bg-slate-900 text-white">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-ocean-950/80 z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-marine-500/20 border border-marine-500/30 text-marine-400 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-water"></i>
+                        <span>Pengalaman Kuliner Seafood Segar Pilihan</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Cita Rasa Hasil Laut <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-ocean-400 via-teal-300 to-marine-400">Segar, Lezat & Tangkapan Hari Ini</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        Selamat datang di **Ocean Fresh Seafood**. Kami menyajikan kelezatan olahan laut dengan bumbu rempah khas Nusantara dan saus rahasia yang menggugah selera keluarga Anda.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#menu" class="px-8 py-3.5 rounded-full font-bold text-white gradient-ocean-marine shadow-lg shadow-ocean-500/30 hover:opacity-95 hover:scale-[1.02] transition-all text-center">
+                            Lihat Menu Makanan
+                        </a>
+                        <a href="#reservasi" class="px-8 py-3.5 rounded-full font-bold text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 transition-all text-center flex items-center justify-center space-x-2">
+                            <i class="fa-regular fa-calendar-check text-ocean-400"></i>
+                            <span>Reservasi Meja</span>
+                        </a>
+                    </div>
+
+                    <!-- Badges TKJ / Project Info -->
+                    <div class="pt-6 border-t border-slate-800 flex items-center space-x-6 text-xs text-slate-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check text-marine-500 text-base"></i>
+                            <span>100% Seafood Segar</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-ocean-400 text-base"></i>
+                            <span>Bumbu Rempah Asli</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-award text-yellow-500 text-base"></i>
+                            <span>Chef Berpengalaman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl overflow-hidden p-2 bg-gradient-to-tr from-ocean-500 to-marine-500 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=80" 
+                             alt="Hidangan Seafood Segar" 
+                             onerror="this.src='https://placehold.co/800x600/0284c7/ffffff?text=Ocean+Fresh+Seafood'"
+                             class="rounded-2xl w-full h-[380px] sm:h-[420px] object-cover shadow-inner">
+                        
+                        <!-- Floating Info Card -->
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700/60 shadow-lg flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-lg bg-marine-500/20 text-marine-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-shrimp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Spesialis Kepiting & Udang</h4>
+                                <p class="text-xs text-slate-300">Dimasak langsung saat dipesan untuk menjaga kesegaran.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGERTIAN & SEJARAH RESTORAN (Sesuai Permintaan Beranda) -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Pengertian Website & Restoran -->
+                <div class="bg-ocean-50/60 rounded-3xl p-8 border border-ocean-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-ocean-500/10 rounded-full blur-2xl"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-ocean-600 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-ocean-500/20">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Pengertian Website Restoran</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4 text-sm sm:text-base">
+                        Website **Ocean Fresh** ini dirancang sebagai platform informasi digital interaktif untuk memudahkan pelanggan dalam menjelajahi berbagai pilihan menu seafood, melakukan pemesanan tempat (reservasi) secara praktis tanpa harus mengantre, serta menemukan info kontak dan lokasi presisi restoran kami.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Website ini memadukan kemudahan teknologi dengan layanan servis restoran terbaik guna menghadirkan pengalaman berwisata kuliner yang modern dan nyaman.
+                    </p>
+                </div>
+
+                <!-- Sejarah Restoran -->
+                <div class="bg-marine-50/60 rounded-3xl p-8 border border-marine-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-marine-500/10 rounded-full blur-2xl"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-marine-600 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-marine-500/20">
+                        <i class="fa-solid fa-anchor"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Sejarah Restoran Ocean Fresh</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4 text-sm sm:text-base">
+                        Berdiri sejak tahun 2012, **Ocean Fresh** berawal dari sebuah warung makan seafood tepi pantai sederhana yang didirikan oleh keluarga nelayan lokal. Berbekal komitmen menghidangkan tangkapan laut paling segar tiap harinya, resep racikan saus Padang dan Bakar Madu kami dengan cepat memikat hati para pecinta kuliner.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Kini, Ocean Fresh telah berkembang menjadi restoran modern bernuansa bahari yang melayani ribuan pelanggan setiap bulannya, tetap menjaga standar bahan berkualitas tinggi langsung dari tempat pelelangan ikan ternama.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 2: MENU MAKANAN DAN MINUMAN -->
+    <section id="menu" class="py-20 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-marine-600 font-bold text-sm tracking-wider uppercase bg-marine-100 px-4 py-1.5 rounded-full inline-block mb-3">Pilihan Terbaik</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Daftar Menu Makanan & Minuman</h2>
+                <p class="mt-3 text-slate-600 text-base">Nikmati aneka hidangan laut yang diolah dengan rempah pilihan serta minuman segar pelepas dahaga.</p>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button onclick="filterMenu('all')" id="filter-all" class="menu-filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all bg-ocean-600 text-white shadow-md">
+                        Semua Menu
+                    </button>
+                    <button onclick="filterMenu('makanan')" id="filter-makanan" class="menu-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                        <i class="fa-solid fa-drumstick-bite mr-1.5 text-ocean-500"></i> Makanan Seafood
+                    </button>
+                    <button onclick="filterMenu('minuman')" id="filter-minuman" class="menu-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                        <i class="fa-solid fa-glass-water mr-1.5 text-marine-500"></i> Minuman Segar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                
+                <!-- 1. Makanan: Kepiting Saus Padang -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://cnc-magazine.oramiland.com/parenting/original_images/Resep_Kepiting_Bumbu_Saus_Padang.jpg"
+                             alt="Kepiting Saus Padang"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Kepiting+Saus+Padang'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">Best Seller</span>
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 120.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Kepiting Saus Padang Spesial</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Kepiting jantan pilihan dengan baluran saus padang gurih, pedas, manis yang melimpah.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-fire text-amber-500 mr-1"></i> Pedas Sedang</span>
+                            <button onclick="selectForBooking('Kepiting Saus Padang Spesial')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Makanan: Udang Bakar Madu -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://i0.wp.com/resepkoki.id/wp-content/uploads/2017/10/Resep-Udang-Bakar-Madu.jpg?fit=1080%2C1194&ssl=1" 
+                             alt="Udang Bakar Madu"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Udang+Bakar+Madu'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 85.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Udang Bakar Madu Jumbo</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Udang windu berukuran besar dibakar dengan olesan madu murni dan mentega aromatik.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-star text-amber-400 mr-1"></i> Favorit Anak</span>
+                            <button onclick="selectForBooking('Udang Bakar Madu Jumbo')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Makanan: Cumi Goreng Tepung Crispy -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.getrecipekit.com/20230614185559-sealand-breaded-calamari-with-homemade-sauces.jpg?aspect_ratio=1:1&quality=90&" 
+                             alt="Cumi Goreng Tepung"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Cumi+Goreng+Tepung'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 65.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Cumi Crispy Saus Tartar</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Cumi-cumi segar dengan baluran tepung renyah, disajikan bersama saus tartar segar.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-cookie-bite text-amber-600 mr-1"></i> Ekstra Renyah</span>
+                            <button onclick="selectForBooking('Cumi Crispy Saus Tartar')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Makanan: Ikan Gurame Asam Manis -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF8wuP2KvZDK3pEuVNbtv-boR3jBgmxPp1yMQog-UcjpAf1GRh7jljNWRF&s=10" 
+                             alt="Ikan Gurame Asam Manis"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Ikan+Gurame+Asam+Manis'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 95.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Gurame Terbang Asam Manis</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Ikan gurame segar digoreng renyah dengan siraman saus nanas asam manis kental.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-users text-ocean-500 mr-1"></i> Porsi 2-3 Orang</span>
+                            <button onclick="selectForBooking('Gurame Terbang Asam Manis')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Makanan: Kerang Dara Rebus Sambal Nanas -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://img-global.cpcdn.com/recipes/e4e20f6536276bb1/1200x630cq80/photo.jpg" 
+                             alt="Kerang Dara Rebus"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Kerang+Dara+Rebus'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 45.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Kerang Dara Rebus Rempah</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Kerang dara segar direbus bersama sereh dan jahe, disajikan dengan cocolan sambal nanas.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-pepper-hot text-red-500 mr-1"></i> Sambal Khas</span>
+                            <button onclick="selectForBooking('Kerang Dara Rebus Rempah')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Makanan: Lobster Panggang Keju -->
+                <div class="menu-item makanan bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuQi-Fb6YnWRbjhRfeG4ibgrJMpTbFOymNLHXRqp42waXCSC6yFn9gGi8&s=10" 
+                             alt="Lobster Panggang Keju"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Lobster+Panggang+Keju'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-marine-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">Sangat Disukai</span>
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-ocean-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 210.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-ocean-600 transition-colors">Lobster Panggang Mozzarella</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Lobster batu pilihan dipanggang dengan saus keju mozzarella leleh dan rempah oregano.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> Menu Premium</span>
+                            <button onclick="selectForBooking('Lobster Panggang Mozzarella')" class="text-xs font-bold text-ocean-600 hover:text-ocean-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Minuman: Es Kelapa Muda Jeruk -->
+                <div class="menu-item minuman bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdDtzVCfQUSuxa54scCbqwmDE--_dJbgH56MPTVyjICfIErM0zLT_fco&s=10" 
+                             alt="Es Kelapa Muda Jeruk"
+                             onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=Es+Kelapa+Muda'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-marine-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 22.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-marine-600 transition-colors">Es Kelapa Muda Peras Jeruk</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Air kelapa murni dan daging kelapa muda disajikan segar dengan perasan jeruk peras alami.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-snowflake text-ocean-400 mr-1"></i> Dingin Segar</span>
+                            <button onclick="selectForBooking('Es Kelapa Muda Peras Jeruk')" class="text-xs font-bold text-marine-600 hover:text-marine-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Minuman: Blue Ocean Sparkler -->
+                <div class="menu-item minuman bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" 
+                             alt="Blue Ocean Sparkler"
+                             onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Blue+Ocean+Sparkler'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-ocean-500 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">Signature</span>
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-marine-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 28.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-marine-600 transition-colors">Blue Ocean Mocktail Sparkler</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Perpaduan sirup Blue Curaçao, soda dingin, lemon segar, dan biji selasih yang menyegarkan.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-glass-cheers text-ocean-500 mr-1"></i> Paling Populer</span>
+                            <button onclick="selectForBooking('Blue Ocean Mocktail Sparkler')" class="text-xs font-bold text-marine-600 hover:text-marine-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Minuman: Jus Alpukat Super -->
+                <div class="menu-item minuman bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcaEpuLZHdLoaDlq8F9mavAINzr2XvZscxxox3z6UVdw&s=10" 
+                             alt="Jus Alpukat"
+                             onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=Jus+Alpukat'"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-marine-700 font-extrabold text-sm px-3 py-1 rounded-full shadow">Rp 25.000</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-slate-900 group-hover:text-marine-600 transition-colors">Jus Alpukat Mentega Kental</h3>
+                        </div>
+                        <p class="text-slate-500 text-xs sm:text-sm mb-4 flex-grow">Alpukat mentega matang blender kental, disiram cokelat susu kental manis melimpah.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400"><i class="fa-solid fa-leaf text-emerald-500 mr-1"></i> Buah Asli</span>
+                            <button onclick="selectForBooking('Jus Alpukat Mentega Kental')" class="text-xs font-bold text-marine-600 hover:text-marine-800 flex items-center space-x-1">
+                                <span>Pesan Ini</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 3: RESERVASI LANGSUNG (BOOKING MEJA) -->
+    <section id="reservasi" class="py-20 bg-gradient-to-b from-white to-ocean-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    
+                    <!-- Left Banner -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-ocean-700 via-ocean-600 to-marine-700 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
+                        <div>
+                            <span class="bg-white/20 text-white font-bold text-xs uppercase px-3 py-1 rounded-full backdrop-blur-md inline-block mb-4">Layanan Cepat</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4">Reservasi Tempat Langsung</h2>
+                            <p class="text-ocean-100 text-sm leading-relaxed mb-6">
+                                Hindari antrean panjang dan pastikan meja favorit Anda berserta keluarga sudah siap sebelum Anda tiba di tempat kami.
+                            </p>
+
+                            <div class="space-y-4 pt-4 border-t border-white/20">
+                                <div class="flex items-center space-x-3 text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-clock text-teal-300"></i>
+                                    </div>
+                                    <span>Jam Buka: 10:00 - 22:00 WIB</span>
+                                </div>
+                                <div class="flex items-center space-x-3 text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-chair text-teal-300"></i>
+                                    </div>
+                                    <span>Pilihan Area: Indoor (AC) & Outdoor (Vip Beach Side)</span>
+                                </div>
+                                <div class="flex items-center space-x-3 text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-bolt text-teal-300"></i>
+                                    </div>
+                                    <span>Konfirmasi Instan via WhatsApp</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/20 text-xs text-ocean-100 flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-marine-400"></i>
+                            <span>Tanpa biaya tambahan untuk pemesanan via website.</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Form -->
+                    <div class="lg:col-span-7 p-8 sm:p-12">
+                        <form id="reservation-form" onsubmit="handleReservation(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                                    <input type="text" id="res-name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="res-phone" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Jumlah Tamu <span class="text-red-500">*</span></label>
+                                    <select id="res-guests" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all bg-white">
+                                        <option value="2 Orang">2 Orang</option>
+                                        <option value="4 Orang" selected>4 Orang</option>
+                                        <option value="6 Orang">6 Orang</option>
+                                        <option value="8+ Orang (Rombongan)">8+ Orang (Rombongan)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Tanggal Datang <span class="text-red-500">*</span></label>
+                                    <input type="date" id="res-date" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Jam Datang <span class="text-red-500">*</span></label>
+                                    <select id="res-time" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all bg-white">
+                                        <option value="11:30 WIB">11:30 WIB (Makan Siang)</option>
+                                        <option value="13:00 WIB">13:00 WIB</option>
+                                        <option value="18:30 WIB" selected>18:30 WIB (Makan Malam)</option>
+                                        <option value="20:00 WIB">20:00 WIB</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Area Tempat Duduk</label>
+                                    <select id="res-area" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all bg-white">
+                                        <option value="Indoor AC">Indoor (Lantai 1 - Ruang AC)</option>
+                                        <option value="Outdoor Saung">Outdoor Saung Leshan (Nuansa Santai)</option>
+                                        <option value="VIP Ocean View">VIP Ocean View (Lantai 2 Balkon)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Pesanan Awal (Opsional)</label>
+                                    <input type="text" id="res-menu-item" placeholder="Contoh: Kepiting Saus Padang (1)" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Catatan Tambahan</label>
+                                <textarea id="res-notes" rows="2" placeholder="Contoh: Tolong sediakan kursi bayi (high chair) atau request sambal pisah." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent text-sm transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl font-bold text-white gradient-ocean-marine shadow-lg shadow-ocean-500/20 hover:opacity-95 transition-all text-base flex items-center justify-center space-x-2">
+                                <i class="fa-regular fa-paper-plane"></i>
+                                <span>Kirim Reservasi Sekarang</span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 4: KONTAK DAN MEDIA SOSIAL -->
+    <section id="kontak" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-ocean-600 font-bold text-sm tracking-wider uppercase bg-ocean-50 px-4 py-1.5 rounded-full inline-block mb-3">Hubungi Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Kontak & Layanan Pelanggan</h2>
+                <p class="mt-3 text-slate-600">Ada pertanyaan atau butuh bantuan pemesanan acara besar? Tim kami siap melayani Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Phone -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-ocean-300 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-1">Telepon Restoran</h4>
+                    <p class="text-slate-500 text-xs mb-3">Layanan Informasi Meja</p>
+                    <a href="tel:087768062504" class="text-ocean-600 font-bold text-sm hover:underline">0877-6808-2504</a>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-marine-300 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-marine-100 text-marine-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-1">WhatsApp Official</h4>
+                    <p class="text-slate-500 text-xs mb-3">Respon Cepat 24/7</p>
+                    <a href="https://wa.me/6287768062504" target="_blank" class="text-marine-600 font-bold text-sm hover:underline">+62 877-6806-2504</a>
+                </div>
+
+                <!-- Email -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-ocean-300 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-1">Email Resmi</h4>
+                    <p class="text-slate-500 text-xs mb-3">Kerjasama & Event</p>
+                    <a href="mailto:rizki.kurniawan1910@gmail.com" class="text-ocean-600 font-bold text-sm hover:underline">info@oceanfresh.com</a>
+                </div>
+
+                <!-- Jam Operasional -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-marine-300 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-marine-100 text-marine-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-1">Jam Operasional</h4>
+                    <p class="text-slate-500 text-xs mb-1">Senin - Minggu</p>
+                    <span class="text-slate-800 font-bold text-sm">10:00 - 22:00 WIB</span>
+                </div>
+            </div>
+
+            <!-- Media Sosial Section -->
+            <div class="mt-12 bg-gradient-to-r from-ocean-600 to-marine-600 rounded-2xl p-8 text-white flex flex-col sm:flex-row items-center justify-between shadow-lg">
+                <div class="text-center sm:text-left mb-6 sm:mb-0">
+                    <h3 class="text-xl font-bold">Ikuti Media Sosial Kami</h3>
+                    <p class="text-ocean-100 text-sm mt-1">Dapatkan update promo spesial, diskon akhir pekan, dan menu musiman terbaru.</p>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="https://www.instagram.com/kiiisjh_/" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl transition-all hover:scale-110" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl transition-all hover:scale-110" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@seaofwaves_" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl transition-all hover:scale-110" title="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl transition-all hover:scale-110" title="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 5: ALAMAT LOKASI RESTORAN -->
+    <section id="alamat" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Info Alamat -->
+                <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-marine-600 font-bold text-sm tracking-wider uppercase bg-marine-50 px-4 py-1.5 rounded-full inline-block mb-4">Lokasi Kami</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Kunjungi Restoran Kami</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Restoran kami berlokasi di kawasan strategis tepi pantai yang mudah dijangkau dengan kendaraan pribadi maupun transportasi umum.
+                        </p>
+
+                        <div class="space-y-4 text-slate-700">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-ocean-100 text-ocean-600 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Alamat Lengkap</h4>
+                                    <p class="text-slate-600 text-sm leading-snug">Jl. Bahari Utama No. 88, Pesisir Indah, Jakarta Utara, DKI Jakarta 14350</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-marine-100 text-marine-600 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-square-parking"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Fasilitas Parkir</h4>
+                                    <p class="text-slate-600 text-sm leading-snug">Area parkir luas aman untuk 50+ Mobil & 100+ Sepeda Motor.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-ocean-100 text-ocean-600 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-compass"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Patokan Lokasi</h4>
+                                    <p class="text-slate-600 text-sm leading-snug">200 meter di timur Dermaga Utama Pesisir Indah, sebelah Taman Marina.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-100">
+                        <a href="https://maps.google.com" target="_blank" class="w-full py-3 px-4 rounded-xl font-bold text-ocean-700 bg-ocean-50 hover:bg-ocean-100 transition-colors flex items-center justify-center space-x-2 text-sm">
+                            <i class="fa-solid fa-diamond-turn-right"></i>
+                            <span>Buka di Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed / Visual Simulation -->
+                <div class="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm relative min-h-[350px]">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126938.82583857313!2d106.782061!3d-6.1352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1d82823023d5%3A0x6b107e3848b7891d!2sJakarta%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        class="w-full h-full min-h-[380px] border-0" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg gradient-ocean-marine flex items-center justify-center text-white text-base">
+                        <i class="fa-solid fa-fish-fins"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">Ocean<span class="text-ocean-400">Fresh</span></span>
+                </div>
+
+                <div class="text-xs sm:text-sm text-slate-400 text-center">
+                    &copy; 2026 Ocean Fresh Seafood. Proyek Tugas SMK Jurusan TKJ (Teknik Komputer & Jaringan).
+                </div>
+
+                <div class="flex space-x-6 text-xs text-slate-400">
+                    <a href="#beranda" class="hover:text-white transition-colors">Beranda</a>
+                    <a href="#menu" class="hover:text-white transition-colors">Menu</a>
+                    <a href="#reservasi" class="hover:text-white transition-colors">Reservasi</a>
+                    <a href="#kontak" class="hover:text-white transition-colors">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL KONFIRMASI RESERVASI -->
+    <div id="reservation-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="w-16 h-16 rounded-2xl bg-marine-100 text-marine-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 text-center mb-1">Reservasi Berhasil!</h3>
+            <p class="text-xs text-slate-500 text-center mb-6">Detail pesanan tempat Anda telah terdaftar dalam sistem restoran.</p>
+
+            <div class="bg-slate-50 rounded-2xl p-4 space-y-3 border border-slate-100 text-xs sm:text-sm mb-6" id="modal-details">
+                <!-- Details injected via JS -->
+            </div>
+
+            <div class="flex space-x-3">
+                <button onclick="closeModal()" class="flex-1 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold hover:bg-slate-50 text-sm transition-all">
+                    Tutup
+                </button>
+                <button onclick="sendWhatsAppConfirmation()" class="flex-1 py-3 rounded-xl bg-marine-600 text-white font-bold hover:bg-marine-700 text-sm transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Kirim WA</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set default date picker to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('res-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                dateInput.value = today;
+            }
+        });
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Filter Menu Makanan & Minuman
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const filterBtns = document.querySelectorAll('.menu-filter-btn');
+
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-ocean-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+
+            const activeBtn = document.getElementById(`filter-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                activeBtn.classList.add('bg-ocean-600', 'text-white', 'shadow-md');
+            }
+
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'flex';
+                } else {
+                    if (item.classList.contains(category)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Quick select menu item into reservation form
+        function selectForBooking(itemName) {
+            const menuItemInput = document.getElementById('res-menu-item');
+            if (menuItemInput) {
+                menuItemInput.value = itemName + ' (1 porsi)';
+            }
+            const resSection = document.getElementById('reservasi');
+            if (resSection) {
+                resSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Global state for last reservation
+        let lastReservationData = null;
+
+        // Form Reservation Handler
+        function handleReservation(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('res-name').value;
+            const phone = document.getElementById('res-phone').value;
+            const guests = document.getElementById('res-guests').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const area = document.getElementById('res-area').value;
+            const menuItem = document.getElementById('res-menu-item').value || 'Tidak ada (Pesan di lokasi)';
+            const notes = document.getElementById('res-notes').value || '-';
+
+            lastReservationData = { name, phone, guests, date, time, area, menuItem, notes };
+
+            // Render modal content
+            const modalDetails = document.getElementById('modal-details');
+            modalDetails.innerHTML = `
+                <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                    <span class="text-slate-500">Atas Nama:</span>
+                    <span class="font-bold text-slate-900">${name}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                    <span class="text-slate-500">Tanggal & Jam:</span>
+                    <span class="font-bold text-slate-900">${date} @ ${time}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                    <span class="text-slate-500">Jumlah Tamu & Area:</span>
+                    <span class="font-bold text-slate-900">${guests} (${area})</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                    <span class="text-slate-500">Pesanan Awal:</span>
+                    <span class="font-bold text-ocean-600">${menuItem}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">No. WhatsApp:</span>
+                    <span class="font-bold text-slate-900">${phone}</span>
+                </div>
+            `;
+
+            // Open Modal
+            document.getElementById('reservation-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('reservation-modal').classList.add('hidden');
+            document.getElementById('reservation-form').reset();
+            const dateInput = document.getElementById('res-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+        }
+
+        // WhatsApp Confirmation Link Generator
+        function sendWhatsAppConfirmation() {
+            if (!lastReservationData) return;
+            const { name, phone, guests, date, time, area, menuItem, notes } = lastReservationData;
+            
+            const message = `Halo Ocean Fresh Seafood, saya ingin konfirmasi reservasi tempat:\n\n` +
+                `*Nama:* ${name}\n` +
+                `*No. WA:* ${phone}\n` +
+                `*Jumlah Tamu:* ${guests}\n` +
+                `*Tanggal & Jam:* ${date}, jam ${time}\n` +
+                `*Pilihan Area:* ${area}\n` +
+                `*Pesanan Awal:* ${menuItem}\n` +
+                `*Catatan:* ${notes}\n\n` +
+                `Mohon konfirmasi ketersediaan meja. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/6287768062504?text=${encodedMessage}`, '_blank');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
